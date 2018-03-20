@@ -30,7 +30,7 @@ deploy:
   api_key:
     # Note; this api_key is only valid for staticfloat/PixmanBuilder; you need
     # to make your own: https://docs.travis-ci.com/user/deployment/releases/
-    secure: 
+    secure: B1RyTwa4zhp4j3AcreQPkPDjvZhRAylEkzmvu/eKkcfGpaww2OWxHr99Z8Aqd4BHZoSNAmmwl2ZLZiriEbBjp+Yurk9q2KGlXswB12b0z8aI1RApI1WqfCxuTQSfkYNpvte2G//QdpiW4hcmdPaKDzf0wfjgMl8kKOsQuh5UQ7DCgJQ54cUOXkfwjtXiVje5xFXHWOnEz6Ayno7DVya9QaDjl7Ig5el8bJl1SqXKEHDbACvLCvC+dtfKdFxnRNf1kcEuBn1EbGnJpJmlSTGSN3rV153ASCjr+yIAZmg3E4HXuABYdmABgWWD3XAW7BLo9DRHUfK6FMt0XHmn2ChSkFBOhEiPCcRrc74uoj6hUq1fYkubLL11/Ya0QPe+hxdSHwnTPChRhUTcnrtxMZSfwOcKeY9/Mo2i2ZLa/JBzKUSMJ/N7osimglCCsNzjPOKg1xxp68XOCIhSn5+ygXjuc1Iq/InMfu6jD4iOku0hyu2XmNiuJlbJLzrFph5GrbdI7WeP8/pKdm6heV6pZOHmB3Ux2k4lpweLu6RLwhHfJnyanuioEWlV2lFE8K02XUEvBu7zDzA+D+XDqpRy3dxEiuL+b/2zvnY1vP76tSkuFwyeWdF5U8ZoJoqP3mQcuuD5fNMv2Iy35OhuODJMH/UQ31FFCAYLnDqUI3+J6Sxwcjc=
   file_glob: true
   file: products/*
   skip_cleanup: true
