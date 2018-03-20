@@ -10,6 +10,29 @@ sources = [
 script = raw"""
 cd $WORKSPACE/srcdir
 cd pixman-0.34.0/
+
+# Apply patch for compilation with clang
+patch <<END
+diff --git a/configure.ac b/configure.ac
+index e833e45..cbebc82 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -1101,7 +1101,7 @@ support_for_gcc_vector_extensions=no
+ AC_MSG_CHECKING(for GCC vector extensions)
+ AC_LINK_IFELSE([AC_LANG_SOURCE([[
+ unsigned int __attribute__ ((vector_size(16))) e, a, b;
+-int main (void) { e = a - ((b << 27) + (b >> (32 - 27))) + 1; return e[0]; }
++int main (void) { __builtin_shuffle(a,b);e = a - ((b << 27) + (b >> (32 - 27))) + 1; return e[0]; }
+ ]])], support_for_gcc_vector_extensions=yes)
+ 
+ if test x$support_for_gcc_vector_extensions = xyes; then
+-- 
+2.10.0
+END
+
+aclocal
+automake
+
 ./configure --prefix=$prefix --host=$target
 make -j${nproc}
 make install
@@ -24,9 +47,8 @@ platforms = [
     BinaryProvider.Linux(:armv7l, :glibc),
     BinaryProvider.Linux(:powerpc64le, :glibc),
     BinaryProvider.MacOS(),
-    # Doesn't work on windows yet, sadly
-    #BinaryProvider.Windows(:i686),
-    #BinaryProvider.Windows(:x86_64)
+    BinaryProvider.Windows(:i686),
+    BinaryProvider.Windows(:x86_64)
 ]
 
 # The products that we will ensure are always built
